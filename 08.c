@@ -4,20 +4,60 @@
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 
-char *proverb="All that glisters is not gold.";
-    void setPointer(char **q/*maegebyeonsou*/)
-	{
-    	*q=proverb;
-    	
-	}
+
+
+int sum(int x, int y)
+{
+    return x+y;	
+}
+
+int sub(int x, int y)
+{
+	return x-y;
+}
+
+int mul(int x, int y)
+{
+	return x*y;
+}
+
+int divide(int x, int y)
+{
+	return x/y;
+}
+
 	
 int main(int argc, char *argv[]) {
 	
-	char *p = "zzz";
+
 	
-	setPointer(&p/*insou*/);
-	printf("%s\n",p);
-  
+	int x, y;
+	char op;
+	int (*pf)(int,int);
+	
+	printf("input the calculation : \n");
+    scanf("%d %c %d",&x,&op,&y);
+    
+    switch(op)
+    {
+    	case'+':
+    		pf=sum;
+    		break;
+    		
+    	case'-':
+    		pf=sub;
+    		break;
+    		
+    	case'*':
+    		pf=mul;
+    		break;
+    		
+    	case'/':
+    		pf=divide;
+    		break;
+    		
+	}
+     printf("result: %i\n", pf(x,y));
 	
 
 	return 0;
